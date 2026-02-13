@@ -8,7 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",  
-    "start": "docker-compose -f ../docker-compose.yml up --build",
+    "start": "docker-compose -f ../docker-compose.yml up --build -d",
     "stop": "docker-compose -f ../docker-compose.yml down"
   },
   "dependencies": {
