@@ -10,18 +10,26 @@ import type {
   AggregationResult,
 } from './types';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8001';
+// Função para obter o URL base da API do localStorage
+function getApiBaseUrl(): string {
+  const stored = localStorage.getItem('recommender_api_url');
+  return stored || import.meta.env.VITE_API_URL || 'http://localhost:8001';
+}
 
-export const api = axios.create({
-  baseURL: API_URL,
-});
+// Criar instância do axios que se atualiza dinamicamente
+export const api = axios.create();
 
-// Interceptor para adicionar Bearer token do localStorage
+// Interceptor para definir o baseURL dinamicamente e adicionar token
 api.interceptors.request.use((config) => {
+  // Definir baseURL dinamicamente
+  config.baseURL = getApiBaseUrl();
+  
+  // Adicionar token de autenticação
   const token = localStorage.getItem('recommender_admin_token');
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }
+  
   return config;
 });
 

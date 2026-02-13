@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { useAuth } from './hooks/useAuth';
 import { Header } from './components/Header';
@@ -23,8 +23,13 @@ const queryClient = new QueryClient({
 });
 
 function Dashboard() {
-  const { token, setToken, isAuthenticated } = useAuth();
+  const { token, setToken, apiUrl, setApiUrl, environment, isAuthenticated } = useAuth();
   const [period, setPeriod] = useState<PeriodOption>('7');
+
+  // Invalidar queries quando o API URL mudar
+  useEffect(() => {
+    queryClient.invalidateQueries();
+  }, [apiUrl]);
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -33,6 +38,9 @@ function Dashboard() {
         onTokenChange={setToken}
         period={period}
         onPeriodChange={setPeriod}
+        apiUrl={apiUrl}
+        onApiUrlChange={setApiUrl}
+        environment={environment}
       />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">

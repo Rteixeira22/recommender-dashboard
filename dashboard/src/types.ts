@@ -110,3 +110,7 @@ export interface AggregationResult {
 // === Period selection ===
 
 export type PeriodOption = '1' | '7' | '14' | '30';
+
+// === Environment detection ===
+
+export type Environment = 'dev' | 'staging' | 'production' | 'custom';
