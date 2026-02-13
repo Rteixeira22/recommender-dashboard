@@ -1,0 +1,16 @@
+services:
+  recommender-dashboard:
+    build:
+      context: ./dashboard
+      dockerfile: Dockerfile
+      args:
+        - VITE_API_URL=${RECOMMENDER_API_URL:-http://recommender.localhost}
+    container_name: recommender-dashboard
+    restart: unless-stopped
+    networks:
+      - default
+
+networks:
+  default:
+    name: ${NETWORK}
+    external: true
