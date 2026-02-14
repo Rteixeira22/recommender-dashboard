@@ -72,7 +72,7 @@ export const TIME_SERIES_METRICS = [
   'unique_users',
 ];
 
-// Labels do funil de conversão
+// Labels de conversão
 export const FUNNEL_METRICS = [
   { key: 'view_to_click_rate', label: 'Vista \u2192 Clique' },
   { key: 'click_to_enroll_rate', label: 'Clique \u2192 Inscrição' },

@@ -76,7 +76,7 @@ export function ConversionFunnel({ period }: ConversionFunnelProps) {
   if (isError || !data) {
     return (
       <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
-        <p className="text-sm text-red-500">Erro ao carregar funil de conversão</p>
+        <p className="text-sm text-red-500">Erro ao carregar conversão</p>
       </div>
     );
   }
@@ -88,7 +88,7 @@ export function ConversionFunnel({ period }: ConversionFunnelProps) {
   return (
     <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
       <div className="p-4 border-b border-gray-100">
-        <h2 className="text-lg font-semibold text-gray-900">Funil de Conversão</h2>
+        <h2 className="text-lg font-semibold text-gray-900">Conversão</h2>
         <p className="text-xs text-gray-500 mt-0.5">
           Comparação das taxas de conversão entre grupos
         </p>
